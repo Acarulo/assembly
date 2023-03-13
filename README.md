@@ -1,13 +1,5 @@
-# Sample Hardhat Project
+# Inline assembly repository
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+The following repository is a showcase of inline assembly use cases, intended to match up each smart contract with their full inline-assembly version.
 
-Try running some of the following tasks:
-
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
-```
+Note: all codes are intended for educational purposes only. Deter from production usage without a prior thorough audit.
