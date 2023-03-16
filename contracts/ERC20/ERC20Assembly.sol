@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity 0.8.10;
 
 uint256 constant maxUint256   = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF;
 
@@ -10,7 +10,7 @@ bytes32 constant symbolLength = 0x0000000000000000000000000000000000000000000000
 bytes32 constant symbolData   = 0x45544b0000000000000000000000000000000000000000000000000000000000;
 
 contract ERC20Assembly {
-    uint256 internal totalSupply;
+    uint256 internal _totalSupply;
 
     mapping(address => uint256) internal balances;
     mapping(address => mapping(address => uint256)) internal allowances;
@@ -23,6 +23,14 @@ contract ERC20Assembly {
             mstore(0x20, 0x01)
             let slot := keccak256(0x00, 0x40)
             sstore(slot, maxUint256)
+        }
+    }
+
+    function totalSupply() public view returns (uint256) {
+        assembly {
+            let supply := sload(0x00)
+            mstore(0x00, supply)
+            return(0x00, 0x20)
         }
     }
 
